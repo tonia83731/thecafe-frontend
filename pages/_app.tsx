@@ -13,9 +13,9 @@ export default function App({ Component, pageProps }: AppProps) {
           content="Relax and Refresh Sip Serenity at Our Tea and Coffee Haven"
         />
       </Head>
-      <div className="w-full">
+      <div className="w-full h-full min-h-screen">
         <Header />
-        <div className="mt-[60px] md:mt-0 md:ml-[60px]">
+        <div className="h-full min-h-screen mt-[60px] md:mt-0 md:ml-[60px]">
           <Component {...pageProps} />
         </div>
       </div>
