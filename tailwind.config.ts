@@ -14,6 +14,8 @@ const config: Config = {
         orange: "#E09132",
         "orange-60": "rgb(224, 145, 50, .6)",
         latte: "#A68E74",
+        "latte-40": "rgb(166, 142, 116, .4)",
+        "latte-60": "rgb(166, 142, 116, .6)",
         olive: "#424530",
       },
       fontFamily: {

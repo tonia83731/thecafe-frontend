@@ -1,5 +1,10 @@
+import ProfileLayout from "@/components/common/ProfileLayout";
 const Orders = () => {
-  return <main className=""></main>;
+  return (
+    <ProfileLayout>
+      <div className=""></div>
+    </ProfileLayout>
+  );
 };
 
 export default Orders;
