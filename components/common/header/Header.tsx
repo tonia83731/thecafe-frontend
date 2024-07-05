@@ -3,66 +3,12 @@ import Image from "next/image";
 import HeaderToggle from "./HeaderToggle";
 import { useState } from "react";
 import { useRouter } from "next/router";
-const navlinks_mobile = [
-  {
-    id: "more",
-    img: "/icons/moreicon.png",
-    img_active: "/icons/moreicon_active.png",
-    href: "#",
-  },
-  {
-    id: "wish",
-    img: "/icons/wishicon.png",
-    img_active: "/icons/wishicon_active.png",
-    href: "/wishlist",
-  },
-  {
-    id: "cart",
-    img: "/icons/carticon.png",
-    img_active: "/icons/carticon_active.png",
-    href: "/cartlist",
-  },
-];
-const navlinks = [
-  {
-    id: "menu",
-    img: "/icons/menuicon.png",
-    img_active: "/icons/menuicon_active.png",
-    href: "/menu",
-  },
-  {
-    id: "about",
-    img: "/icons/abouticon.png",
-    img_active: "/icons/abouticon_active.png",
-    href: "/about",
-  },
-  {
-    id: "profile",
-    img: "/icons/profileicon.png",
-    img_active: "/icons/profileicon_active.png",
-    href: "/profile",
-  },
-];
-const navlinks_two = [
-  {
-    id: "cart",
-    img: "/icons/carticon.png",
-    img_active: "/icons/carticon_active.png",
-    href: "/cartlist",
-  },
-  {
-    id: "signin",
-    img: "/icons/signinicon.png",
-    img_active: "/icons/signinicon_active.png",
-    href: "/signin",
-  },
-  {
-    id: "more",
-    img: "/icons/moreicon.png",
-    img_active: "",
-    href: "/more",
-  },
-];
+import {
+  navlinks,
+  navlinks_mobile,
+  navlinks_two,
+} from "@/data/others/navlinks";
+
 const Header = () => {
   const [isToggle, setIsToggle] = useState(false);
   const { pathname } = useRouter();

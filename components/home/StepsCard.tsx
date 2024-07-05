@@ -1,8 +1,4 @@
-export type StepsCardProps = {
-  index: number;
-  title: string;
-  description: string;
-};
+import { StepsCardProps } from "@/types/type";
 
 const StepsCard = (props: StepsCardProps) => {
   const { index, title, description } = props;

@@ -1,10 +1,4 @@
-export type GeneralInputProps = {
-  label: string;
-  type?: string;
-  id: string;
-  name: string;
-  placeholder: string;
-};
+import { GeneralInputProps } from "@/types/type";
 
 const GeneralInput = (props: GeneralInputProps) => {
   const { label, type = "text", id, name, placeholder } = props;

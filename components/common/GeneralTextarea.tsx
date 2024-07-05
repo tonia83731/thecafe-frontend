@@ -1,4 +1,4 @@
-import { GeneralInputProps } from "./GeneralInput";
+import { GeneralInputProps } from "@/types/type";
 
 const GeneralTextArea = (props: GeneralInputProps) => {
   const { label, id, name, placeholder } = props;

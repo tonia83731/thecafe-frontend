@@ -10,19 +10,29 @@ body {
   font-family: "Roboto", sans-serif;
   color: #424530;
 }
-
 .description-lime-clamp-2 {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
-
 .description-lime-clamp-3 {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #a68e74;
+  border-radius: 3px;
+}
+
+.aspect-ratio {
+  aspect-ratio: 1/1;
 }

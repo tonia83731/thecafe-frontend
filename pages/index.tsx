@@ -1,20 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import StepsSection from "@/components/home/StepsSection";
-const buttonLinks = [
-  {
-    name: "How it works?",
-    href: "/#steps",
-  },
-  {
-    name: "Order now",
-    href: "/menu",
-  },
-  {
-    name: "Sign in / Register",
-    href: "/signin",
-  },
-];
+import { buttonLinks } from "@/data/others/home_btnlist";
+
 export default function Home() {
   return (
     <main className="">

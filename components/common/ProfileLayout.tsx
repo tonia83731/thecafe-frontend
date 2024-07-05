@@ -3,26 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
-const profileLinks = [
-  {
-    id: "settings",
-    title: "Settings",
-    img: "/icons/settingsicon.png",
-    href: "/profile",
-  },
-  {
-    id: "orders",
-    title: "Orders",
-    img: "/icons/ordersicon.png",
-    href: "/profile/orders",
-  },
-  {
-    id: "cupons",
-    title: "Cupons",
-    img: "/icons/cuponsicon.png",
-    href: "/profile/cupons",
-  },
-];
+import { profileLinks } from "@/data/others/profilelinks";
+
 const ProfileLayout = ({ children }: { children: ReactNode }) => {
   const { pathname } = useRouter();
   return (

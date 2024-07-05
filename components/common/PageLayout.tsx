@@ -1,12 +1,5 @@
 import { ReactNode } from "react";
-
-type LayoutProps = {
-  title: string;
-  page?: string;
-  children: ReactNode;
-  href?: string;
-  text?: string;
-};
+import { LayoutProps } from "@/types/type";
 
 const PageLayout = (props: LayoutProps) => {
   const { title, children, page = "", href = "", text = "" } = props;

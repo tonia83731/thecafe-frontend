@@ -1,13 +1,6 @@
 import { ReactNode } from "react";
-import { GeneralInputProps } from "./GeneralInput";
+import { InputWithIconProps } from "../../types/type";
 
-type InputWithIconProps = GeneralInputProps & {
-  icon: ReactNode;
-  btn_close?: ReactNode;
-  btn_open?: ReactNode;
-  onSwitch?: () => void;
-  isShowed?: boolean;
-};
 const InputWithIcon = (props: InputWithIconProps) => {
   const {
     label,

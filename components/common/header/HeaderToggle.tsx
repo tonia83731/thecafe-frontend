@@ -1,56 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-const navtoggleLinks = [
-  {
-    id: "menu",
-    img: "/icons/menuicon.png",
-    img_active: "/icons/menuicon_active.png",
-    href: "/menu",
-    title: "Menu",
-  },
-  {
-    id: "about",
-    img: "/icons/abouticon.png",
-    img_active: "/icons/abouticon_active.png",
-    href: "/about",
-    title: "About",
-  },
-  {
-    id: "profile",
-    img: "/icons/profileicon.png",
-    img_active: "/icons/profileicon_active.png",
-    href: "/profile",
-    title: "Profile",
-  },
-];
-const navtogglelinks_two = [
-  {
-    id: "cart",
-    img: "/icons/carticon.png",
-    img_active: "/icons/carticon_active.png",
-    href: "/cartlist",
-    title: "Cart",
-  },
-  {
-    id: "signin",
-    img: "/icons/signinicon.png",
-    img_active: "/icons/signinicon_active.png",
-    href: "/signin",
-    title: "SignIn/SignUp",
-  },
-  {
-    id: "close",
-    img: "/icons/closeicon.png",
-    img_active: "",
-    href: "/close",
-    title: "Close",
-  },
-];
-type HeaderToggleProps = {
-  isToggle: boolean;
-  handleHeaderToggle: () => void;
-};
+import { navtoggleLinks, navtogglelinks_two } from "@/data/others/navlinks";
+import { HeaderToggleProps } from "@/types/type";
+
 const HeaderToggle = (props: HeaderToggleProps) => {
   const { isToggle, handleHeaderToggle } = props;
   const { pathname } = useRouter();
