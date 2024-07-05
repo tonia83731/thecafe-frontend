@@ -7,6 +7,9 @@ import ProductCard from "@/components/menu/ProductCard";
 import { menuItems } from "@/data/dummy/productlist";
 import { typeOptions } from "@/data/others/producttype";
 import { filterOptions } from "@/types/type";
+import DrinksCustom from "@/components/menu/DrinksCustom";
+import MealsCustom from "@/components/menu/MealsCustom";
+import DessertsCustom from "@/components/menu/DessertCustom";
 
 const Menu = () => {
   const [isChecked, setIsChecked] = useState<filterOptions>({
@@ -16,6 +19,9 @@ const Menu = () => {
     meals: true,
   });
   const [isTypeSelected, setIsTypeSelected] = useState<string>("grid");
+  const [drinkToggle, setDrinkToggle] = useState(false);
+  const [mealToggle, setMealToggle] = useState(false);
+  const [dessertToggle, setDessertToggle] = useState(false);
   const handleFilterOptions = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name as keyof filterOptions;
     const checked = e.target.checked;
@@ -124,7 +130,17 @@ const Menu = () => {
               {/* menu */}
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
                 {menuItems.map((item) => {
-                  return <ProductCard {...item} key={item.id} />;
+                  return (
+                    <ProductCard
+                      {...item}
+                      key={item.id}
+                      onProductSelect={() => {
+                        if (item.type === "drinks") setDrinkToggle(true);
+                        if (item.type === "meals") setMealToggle(true);
+                        if (item.type === "dessert") setDessertToggle(true);
+                      }}
+                    />
+                  );
                 })}
               </div>
               {/* pagination */}
@@ -133,9 +149,13 @@ const Menu = () => {
           </div>
         </div>
       </main>
-      <div className="flex flex-col gap-2">
-        <div className=""></div>
-      </div>
+      {drinkToggle && (
+        <DrinksCustom onToggleClick={() => setDrinkToggle(false)} />
+      )}
+      {mealToggle && <MealsCustom onToggleClick={() => setMealToggle(false)} />}
+      {dessertToggle && (
+        <DessertsCustom onToggleClick={() => setDessertToggle(false)} />
+      )}
     </>
   );
 };

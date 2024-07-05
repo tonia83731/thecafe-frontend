@@ -50,3 +50,15 @@ export type filterOptions = {
   desserts: boolean;
   meals: boolean;
 };
+export type CustomDrinks = {
+  size: string;
+  sugar: string;
+  ice: string;
+  toppings: string[];
+};
+export type CustomDrinksKeys = keyof CustomDrinks;
+export type CustomMeals = {
+  based: string[];
+  addon: string[];
+};
+export type CustomMealsKeys = keyof CustomMeals;

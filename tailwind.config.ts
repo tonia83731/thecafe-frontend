@@ -20,6 +20,7 @@ const config: Config = {
         "latte-40": "rgb(166, 142, 116, .4)",
         "latte-60": "rgb(166, 142, 116, .6)",
         olive: "#424530",
+        "olive-40": "rgb(66, 69, 48, .4)",
       },
       fontFamily: {
         italiana: ["Italiana", "sans-serif"],

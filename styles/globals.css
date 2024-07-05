@@ -25,12 +25,26 @@ body {
   -webkit-line-clamp: 3;
 }
 
-.custom-scroll::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 6px;
 }
-.custom-scroll::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: #a68e74;
   border-radius: 3px;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input,
+textarea {
+  outline: none;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 .aspect-ratio {

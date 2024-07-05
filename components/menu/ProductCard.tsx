@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { ProductsProps } from "@/types/type";
-const ProductCard = (props: ProductsProps) => {
-  const { id, image, name, description, price, type } = props;
+type ProductCardProps = ProductsProps & { onProductSelect: () => void };
+const ProductCard = (props: ProductCardProps) => {
+  const { id, image, name, description, price, type, onProductSelect } = props;
   return (
     <div className="bg-white drop-shadow-md rounded-md p-4">
       <div className="grid grid-cols-3 gap-2">
@@ -17,7 +18,10 @@ const ProductCard = (props: ProductsProps) => {
           <p className="text-xs text-latte h-8 description-lime-clamp-3">
             {description}
           </p>
-          <button className="text-xs bg-orange text-white hover:drop-shadow-sm hover:font-bold px-2 py-1 rounded-md">
+          <button
+            className="text-xs bg-orange text-white hover:drop-shadow-sm hover:font-bold px-2 py-1 rounded-md"
+            onClick={onProductSelect}
+          >
             Select Item
           </button>
         </div>
