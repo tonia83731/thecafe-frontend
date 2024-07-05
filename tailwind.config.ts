@@ -11,7 +11,10 @@ const config: Config = {
       colors: {
         light: "#FFFBF2",
         yellow: "#FFEFCD",
+        "yellow-40": "rgb(255, 239, 205, .4)",
+        "yellow-80": "rgb(255, 239, 205, .8)",
         orange: "#E09132",
+        "orange-5": "rgb(224, 145, 50, .05)",
         "orange-60": "rgb(224, 145, 50, .6)",
         latte: "#A68E74",
         "latte-40": "rgb(166, 142, 116, .4)",

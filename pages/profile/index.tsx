@@ -7,6 +7,7 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { MdOutlinePhoneIphone } from "react-icons/md";
 import { LuEye } from "react-icons/lu";
 import { LuEyeOff } from "react-icons/lu";
+import { FaLocationDot } from "react-icons/fa6";
 import { useState } from "react";
 const Profile = () => {
   const [isShowed, setIsShowed] = useState(false);
@@ -50,6 +51,13 @@ const Profile = () => {
             name="phone"
             placeholder="0912345678"
             icon={<MdOutlinePhoneIphone />}
+          />
+          <InputWithIcon
+            label="Address"
+            id="address"
+            name="address"
+            placeholder="Cafe Rd. No.158"
+            icon={<FaLocationDot />}
           />
         </div>
         <div className="hidden md:block">

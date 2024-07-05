@@ -1,4 +1,5 @@
 import StepsCard from "./StepsCard";
+import PageLayout from "../common/PageLayout";
 import { StepsCardProps } from "./StepsCard";
 const stepsData = [
   {
@@ -20,15 +21,22 @@ const stepsData = [
 
 const StepsSection = () => {
   return (
-    <section className="px-4 py-20 max-w-[1280px]" id="steps">
-      <h1 className="text-olive font-italiana text-3xl text-center md:text-6xl">
+    <section className="" id="steps">
+      {/* <h1 className="text-olive font-italiana text-3xl text-center md:text-6xl">
         How It Works?
       </h1>
       <div className="flex gap-12 md:gap-8 flex-col pt-10 md:w-4/5 md:mx-auto">
         {stepsData.map((item, index) => {
           return <StepsCard index={index} {...item} key={item.title} />;
         })}
-      </div>
+      </div> */}
+      <PageLayout title="How It Works?">
+        <div className="flex gap-12 md:gap-8 flex-col pt-10 md:w-4/5 md:mx-auto">
+          {stepsData.map((item, index) => {
+            return <StepsCard index={index} {...item} key={item.title} />;
+          })}
+        </div>
+      </PageLayout>
     </section>
   );
 };

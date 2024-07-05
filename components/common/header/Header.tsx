@@ -7,16 +7,19 @@ const navlinks_mobile = [
   {
     id: "more",
     img: "/icons/moreicon.png",
+    img_active: "/icons/moreicon_active.png",
     href: "#",
   },
   {
     id: "wish",
     img: "/icons/wishicon.png",
+    img_active: "/icons/wishicon_active.png",
     href: "/wishlist",
   },
   {
     id: "cart",
     img: "/icons/carticon.png",
+    img_active: "/icons/carticon_active.png",
     href: "/cartlist",
   },
 ];
@@ -65,7 +68,7 @@ const Header = () => {
   const { pathname } = useRouter();
   return (
     <>
-      <header className="z-[888] w-full h-[60px] md:w-[60px] md:h-screen leading-[60px] md:leading-normal bg-yellow flex justify-between items-center fixed top-0 left-0 md:flex-col md:py-6">
+      <header className="z-[888] w-full h-[60px] md:w-[60px] md:h-screen leading-[60px] md:leading-normal bg-yellow flex justify-between items-center fixed top-0 left-0 md:flex-col px-4 md:px-0 md:py-6">
         <div className="md:flex md:flex-col gap-8 w-full">
           <Link href="/" className="flex gap-1 items-center justify-center">
             <Image
@@ -104,19 +107,32 @@ const Header = () => {
           </nav>
         </div>
         {/* mobile navbar */}
-        <nav className="flex gap-2 md:hidden">
-          {navlinks_mobile.map(({ id, img, href }, index) => {
-            return index > 1 ? (
-              <Link href={href} key={id} title={id}>
-                <Image src={img} width={25} height={25} alt={id}></Image>
+        <nav className="flex md:hidden h-full min-w-[160px]">
+          {navlinks_mobile.map(({ id, img, img_active, href }, index) => {
+            return index > 0 ? (
+              <Link
+                href={href}
+                key={id}
+                title={id}
+                className={`${
+                  pathname === href ? "bg-latte text-yellow" : ""
+                } h-full px-1.5 flex justify-center items-center`}
+              >
+                <Image
+                  src={pathname === href ? img_active : img}
+                  width={30}
+                  height={30}
+                  alt={id}
+                ></Image>
               </Link>
             ) : (
               <button
                 key={id}
                 title={id}
                 onClick={() => setIsToggle(!isToggle)}
+                className={`px-1.5`}
               >
-                <Image src={img} width={25} height={25} alt={id}></Image>
+                <Image src={img} width={30} height={30} alt={id}></Image>
               </button>
             );
           })}
