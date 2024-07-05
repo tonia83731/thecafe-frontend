@@ -1,4 +1,15 @@
-export const drinksCustomList = [
+import { DrinkCustomKeys, MealCustomKeys } from "@/state/useCustomStore";
+type CustomList<T> = {
+  uid: T;
+  title: string;
+  options: CustomOptionList[];
+};
+type CustomOptionList = {
+  id: string;
+  name: string;
+  price: number;
+};
+export const drinksCustomList: CustomList<DrinkCustomKeys>[] = [
   {
     uid: "size",
     title: "Drink Size",
@@ -7,19 +18,16 @@ export const drinksCustomList = [
         id: "tall",
         name: "Tall",
         price: 0,
-        start: true,
       },
       {
         id: "grande",
         name: "Grande",
         price: 10,
-        start: false,
       },
       {
         id: "venti",
         name: "Venti",
         price: 15,
-        start: false,
       },
     ],
   },
@@ -31,31 +39,26 @@ export const drinksCustomList = [
         id: "0%sugar",
         name: "Sugar Free",
         price: 0,
-        start: false,
       },
       {
         id: "30%sugar",
         name: "30% Sugar",
         price: 0,
-        start: false,
       },
       {
         id: "50%sugar",
         name: "Half Sugar",
         price: 0,
-        start: true,
       },
       {
         id: "70%sugar",
         name: "70% Sugar",
         price: 0,
-        start: false,
       },
       {
         id: "100%sugar",
         name: "Full Sugar",
         price: 0,
-        start: false,
       },
     ],
   },
@@ -67,37 +70,31 @@ export const drinksCustomList = [
         id: "hot",
         name: "Hot",
         price: 0,
-        start: false,
       },
       {
         id: "0%ice",
         name: "No Ice",
         price: 0,
-        start: false,
       },
       {
         id: "30%ice",
         name: "30% Ice",
         price: 0,
-        start: false,
       },
       {
         id: "50%ice",
         name: "Half Ice",
         price: 0,
-        start: true,
       },
       {
         id: "70%ice",
         name: "70% Ice",
         price: 0,
-        start: false,
       },
       {
         id: "100%ice",
         name: "Full Ice",
         price: 0,
-        start: false,
       },
     ],
   },
@@ -109,48 +106,41 @@ export const drinksCustomList = [
         id: "topioca",
         name: "Topioca",
         price: 5,
-        start: false,
       },
       {
         id: "coconut-jelly",
         name: "Coconut Jelly",
         price: 5,
-        start: false,
       },
       {
         id: "konjac-jelly",
         name: "Konjac Jelly",
         price: 5,
-        start: false,
       },
       {
         id: "aloe-vera",
         name: "Aloe Vera",
         price: 10,
-        start: false,
       },
       {
         id: "pudding",
         name: "Pudding",
         price: 10,
-        start: false,
       },
       {
         id: "tea-jelly",
         name: "Tea Jelly",
         price: 10,
-        start: false,
       },
       {
         id: "aiyu",
         name: "Aiyu",
         price: 10,
-        start: false,
       },
     ],
   },
 ];
-export const mealsCustomList = [
+export const mealsCustomList: CustomList<MealCustomKeys>[] = [
   {
     uid: "based",
     title: "Based",

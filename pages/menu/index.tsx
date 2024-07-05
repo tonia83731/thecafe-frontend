@@ -1,58 +1,20 @@
-import PageLayout from "@/components/common/PageLayout";
 import { RiSearch2Line } from "react-icons/ri";
 import { BsFillGridFill } from "react-icons/bs";
 import { FaListUl } from "react-icons/fa";
-import { useState } from "react";
 import ProductCard from "@/components/menu/ProductCard";
 import ProductList from "@/components/menu/ProductList";
 import { menuItems } from "@/data/dummy/productlist";
 import { typeOptions } from "@/data/others/producttype";
 import { filterOptions } from "@/types/type";
-import DrinksCustom from "@/components/menu/DrinksCustom";
-import MealsCustom from "@/components/menu/MealsCustom";
-import DessertsCustom from "@/components/menu/DessertCustom";
+import MobileCustom from "@/components/menu/MobileCustom";
 import DesktopCustom from "@/components/menu/DesktopCustom";
-
+import { useFilterStore } from "@/state/useFilterStore";
+import { useMenuTypeStore } from "@/state/useMenuTypeStore";
+import { useModalStore } from "@/state/useModalToggleStore";
 const Menu = () => {
-  const [isChecked, setIsChecked] = useState<filterOptions>({
-    all: true,
-    drinks: true,
-    desserts: true,
-    meals: true,
-  });
-  const [isTypeSelected, setIsTypeSelected] = useState<string>("grid");
-  const [drinkToggle, setDrinkToggle] = useState(false);
-  const [mealToggle, setMealToggle] = useState(false);
-  const [dessertToggle, setDessertToggle] = useState(false);
-  const [menuTypeSelect, setMenuTypeSelect] = useState("");
-  const handleFilterOptions = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const name = e.target.name as keyof filterOptions;
-    const checked = e.target.checked;
-    if (name === "all" && checked) initializedOptions();
-    else if (name === "all" && !checked) {
-      setIsChecked({
-        all: false,
-        drinks: false,
-        desserts: false,
-        meals: false,
-      });
-    } else {
-      setIsChecked((prev) => ({
-        ...prev,
-        all: false,
-        [name]: checked,
-      }));
-    }
-  };
-
-  const initializedOptions = () => {
-    setIsChecked({
-      all: true,
-      drinks: false,
-      desserts: false,
-      meals: false,
-    });
-  };
+  const { isCheckedOptions, handleIsCheckedOptions } = useFilterStore();
+  const { menuType, handleTypeSwitch } = useMenuTypeStore();
+  const { isModalToggle, handleProductType, handleToggle } = useModalStore();
 
   return (
     <>
@@ -67,21 +29,17 @@ const Menu = () => {
               <div className="flex gap-2 items-center">
                 <button
                   className={`text-lg p-2 rounded-md border-2 border-olive ${
-                    isTypeSelected === "grid"
-                      ? "bg-olive text-light"
-                      : "text-olive"
+                    menuType === "grid" ? "bg-olive text-light" : "text-olive"
                   }`}
-                  onClick={() => setIsTypeSelected("grid")}
+                  onClick={() => handleTypeSwitch("grid")}
                 >
                   <BsFillGridFill />
                 </button>
                 <button
                   className={`text-lg p-2 rounded-md border-2 border-olive ${
-                    isTypeSelected === "list"
-                      ? "bg-olive text-light"
-                      : "text-olive"
+                    menuType === "list" ? "bg-olive text-light" : "text-olive"
                   }`}
-                  onClick={() => setIsTypeSelected("list")}
+                  onClick={() => handleTypeSwitch("list")}
                 >
                   <FaListUl />
                 </button>
@@ -101,13 +59,13 @@ const Menu = () => {
                         id={id}
                         className="hidden"
                         name={id}
-                        checked={isChecked[id as keyof filterOptions]}
-                        onChange={handleFilterOptions}
+                        checked={isCheckedOptions[id as keyof filterOptions]}
+                        onChange={handleIsCheckedOptions}
                       />
                       <label
                         htmlFor={id}
                         className={`text-sm md:text-xs lg:text-sm text-center w-full rounded-full py-1 border-2 border-olive ${
-                          isChecked[id as keyof filterOptions]
+                          isCheckedOptions[id as keyof filterOptions]
                             ? "bg-olive text-light"
                             : "text-olive"
                         }`}
@@ -132,7 +90,7 @@ const Menu = () => {
             {/* menu & pagination */}
             <div className="">
               <>
-                {isTypeSelected === "list" ? (
+                {menuType === "list" ? (
                   <div className="flex flex-col gap-4">
                     {menuItems.map((item) => {
                       return (
@@ -140,11 +98,9 @@ const Menu = () => {
                           {...item}
                           key={item.id}
                           onProductSelect={() => {
-                            if (item.type === "drinks") setDrinkToggle(true);
-                            if (item.type === "meals") setMealToggle(true);
-                            if (item.type === "dessert") setDessertToggle(true);
+                            handleProductType(item.type);
+                            handleToggle();
                           }}
-                          onTypeSelect={(type) => setMenuTypeSelect(type)}
                         />
                       );
                     })}
@@ -157,34 +113,15 @@ const Menu = () => {
                           {...item}
                           key={item.id}
                           onProductSelect={() => {
-                            if (item.type === "drinks") setDrinkToggle(true);
-                            if (item.type === "meals") setMealToggle(true);
-                            if (item.type === "dessert") setDessertToggle(true);
+                            handleProductType(item.type);
+                            handleToggle();
                           }}
-                          onTypeSelect={(type) => setMenuTypeSelect(type)}
                         />
                       );
                     })}
                   </div>
                 )}
               </>
-              {/* menu */}
-              {/* <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
-                {menuItems.map((item) => {
-                  return (
-                    <ProductCard
-                      {...item}
-                      key={item.id}
-                      onProductSelect={() => {
-                        if (item.type === "drinks") setDrinkToggle(true);
-                        if (item.type === "meals") setMealToggle(true);
-                        if (item.type === "dessert") setDessertToggle(true);
-                      }}
-                      onTypeSelect={(type) => setMenuTypeSelect(type)}
-                    />
-                  );
-                })}
-              </div> */}
 
               {/* pagination */}
               <div className=""></div>
@@ -192,14 +129,8 @@ const Menu = () => {
           </div>
         </div>
       </main>
-      {drinkToggle && (
-        <DrinksCustom onToggleClick={() => setDrinkToggle(false)} />
-      )}
-      {mealToggle && <MealsCustom onToggleClick={() => setMealToggle(false)} />}
-      {dessertToggle && (
-        <DessertsCustom onToggleClick={() => setDessertToggle(false)} />
-      )}
-      <DesktopCustom type={menuTypeSelect} />
+      {isModalToggle && <MobileCustom />}
+      <DesktopCustom />
     </>
   );
 };

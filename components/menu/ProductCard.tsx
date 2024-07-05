@@ -1,18 +1,12 @@
 import Image from "next/image";
 import { ProductCardProps } from "@/types/type";
 import { FaHeart } from "react-icons/fa";
-
+import { useSidebarStore } from "@/state/useSidebarStore";
+import { useModalStore } from "@/state/useModalToggleStore";
 const ProductCard = (props: ProductCardProps) => {
-  const {
-    id,
-    image,
-    name,
-    description,
-    price,
-    type,
-    onProductSelect,
-    onTypeSelect,
-  } = props;
+  const { image, name, description, price, type, onProductSelect } = props;
+  const { handleSidebarOption } = useSidebarStore();
+  const {  handleProductType } = useModalStore();
   return (
     <div className="bg-white drop-shadow-md rounded-md p-4">
       <div className="grid grid-cols-3 gap-2">
@@ -44,7 +38,10 @@ const ProductCard = (props: ProductCardProps) => {
           </button>
           <button
             className="hidden md:block text-xs bg-orange text-white hover:drop-shadow-sm hover:font-bold px-2 py-1 rounded-md"
-            onClick={() => onTypeSelect(type)}
+            onClick={() => {
+              handleProductType(type);
+              handleSidebarOption("custom");
+            }}
           >
             Select Item
           </button>
