@@ -36,6 +36,10 @@ export type ProductsProps = {
   price: number;
   type: string;
 };
+export type ProductCardProps = ProductsProps & {
+  onProductSelect: () => void;
+  onTypeSelect: (type: string) => void;
+};
 export type TicketProps = {
   code: string;
   title: string;

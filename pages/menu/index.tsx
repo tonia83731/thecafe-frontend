@@ -4,12 +4,14 @@ import { BsFillGridFill } from "react-icons/bs";
 import { FaListUl } from "react-icons/fa";
 import { useState } from "react";
 import ProductCard from "@/components/menu/ProductCard";
+import ProductList from "@/components/menu/ProductList";
 import { menuItems } from "@/data/dummy/productlist";
 import { typeOptions } from "@/data/others/producttype";
 import { filterOptions } from "@/types/type";
 import DrinksCustom from "@/components/menu/DrinksCustom";
 import MealsCustom from "@/components/menu/MealsCustom";
 import DessertsCustom from "@/components/menu/DessertCustom";
+import DesktopCustom from "@/components/menu/DesktopCustom";
 
 const Menu = () => {
   const [isChecked, setIsChecked] = useState<filterOptions>({
@@ -22,6 +24,7 @@ const Menu = () => {
   const [drinkToggle, setDrinkToggle] = useState(false);
   const [mealToggle, setMealToggle] = useState(false);
   const [dessertToggle, setDessertToggle] = useState(false);
+  const [menuTypeSelect, setMenuTypeSelect] = useState("");
   const handleFilterOptions = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name as keyof filterOptions;
     const checked = e.target.checked;
@@ -50,6 +53,7 @@ const Menu = () => {
       meals: false,
     });
   };
+
   return (
     <>
       <main className="w-full h-full px-4 py-12 md:w-4/5 md:mx-auto md:my-8 md:px-0 max-w-[1280px]">
@@ -127,8 +131,45 @@ const Menu = () => {
             </div>
             {/* menu & pagination */}
             <div className="">
+              <>
+                {isTypeSelected === "list" ? (
+                  <div className="flex flex-col gap-4">
+                    {menuItems.map((item) => {
+                      return (
+                        <ProductList
+                          {...item}
+                          key={item.id}
+                          onProductSelect={() => {
+                            if (item.type === "drinks") setDrinkToggle(true);
+                            if (item.type === "meals") setMealToggle(true);
+                            if (item.type === "dessert") setDessertToggle(true);
+                          }}
+                          onTypeSelect={(type) => setMenuTypeSelect(type)}
+                        />
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
+                    {menuItems.map((item) => {
+                      return (
+                        <ProductCard
+                          {...item}
+                          key={item.id}
+                          onProductSelect={() => {
+                            if (item.type === "drinks") setDrinkToggle(true);
+                            if (item.type === "meals") setMealToggle(true);
+                            if (item.type === "dessert") setDessertToggle(true);
+                          }}
+                          onTypeSelect={(type) => setMenuTypeSelect(type)}
+                        />
+                      );
+                    })}
+                  </div>
+                )}
+              </>
               {/* menu */}
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
+              {/* <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
                 {menuItems.map((item) => {
                   return (
                     <ProductCard
@@ -139,10 +180,12 @@ const Menu = () => {
                         if (item.type === "meals") setMealToggle(true);
                         if (item.type === "dessert") setDessertToggle(true);
                       }}
+                      onTypeSelect={(type) => setMenuTypeSelect(type)}
                     />
                   );
                 })}
-              </div>
+              </div> */}
+
               {/* pagination */}
               <div className=""></div>
             </div>
@@ -156,6 +199,7 @@ const Menu = () => {
       {dessertToggle && (
         <DessertsCustom onToggleClick={() => setDessertToggle(false)} />
       )}
+      <DesktopCustom type={menuTypeSelect} />
     </>
   );
 };

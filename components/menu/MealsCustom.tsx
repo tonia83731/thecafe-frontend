@@ -23,7 +23,7 @@ const MealsCustom = ({ onToggleClick }: { onToggleClick: () => void }) => {
       return { ...prev, [uid]: data };
     });
   };
-  console.log(custom);
+  //   console.log(custom);
   return (
     <ModalLayout onToggleClick={onToggleClick}>
       <div className="flex flex-col gap-2">
