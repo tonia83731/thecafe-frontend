@@ -30,7 +30,7 @@ const WishItem = (props: WishItemProps) => {
               <h4 className="font-bold text-olive text-lg break-words">
                 {name}
               </h4>
-              <p className="bg-orange text-white text-xs w-full rounded-sm text-center hidden lg:block">
+              <p className="bg-orange text-white text-xs rounded-sm text-center hidden lg:block w-fit px-2">
                 {type}
               </p>
             </div>

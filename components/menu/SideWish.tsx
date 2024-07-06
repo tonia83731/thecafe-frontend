@@ -11,6 +11,9 @@ const SideWish = () => {
           </>
         );
       })}
+      <button className="bg-gray-green-40 hover:bg-gray-green hover:drop-shadow-md text-white rounded-md px-4 py-1">
+        Clear All
+      </button>
     </div>
   );
 };

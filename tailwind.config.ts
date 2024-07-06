@@ -23,6 +23,8 @@ const config: Config = {
         "latte-60": "rgb(166, 142, 116, .6)",
         olive: "#424530",
         "olive-40": "rgb(66, 69, 48, .4)",
+        "gray-green": "#87A08B",
+        "gray-green-40": "rgb(135, 160, 139, .4)",
       },
       fontFamily: {
         italiana: ["Italiana", "sans-serif"],
