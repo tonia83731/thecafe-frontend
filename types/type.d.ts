@@ -74,3 +74,21 @@ export type ProductCartProps = {
   type: "drinks" | "dessert" | "meals";
   qty: number;
 };
+export type OrderTableItems = {
+  id: string;
+  date: string;
+  items: number;
+  price: number;
+  shipping: "Standard" | "Priority";
+  payment: "cash" | "credit-card";
+  status: "Pending" | "Dispatch" | "Completed";
+};
+export type OrderDetail = {
+  name: string;
+  custom: string;
+  price: number;
+  qty: number;
+};
+export type OrderWithDetail = OrderTableItems & {
+  orders: OrderDetail[];
+};
