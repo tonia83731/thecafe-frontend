@@ -1,9 +1,7 @@
 import { RiSearch2Line } from "react-icons/ri";
 import { BsFillGridFill } from "react-icons/bs";
 import { FaListUl } from "react-icons/fa";
-import ProductCard from "@/components/menu/ProductCard";
-import ProductList from "@/components/menu/ProductList";
-import { menuItems } from "@/data/dummy/productlist";
+import MenuGridAndList from "@/components/menu/MenuGridAndList";
 import { typeOptions } from "@/data/others/producttype";
 import { filterOptions } from "@/types/type";
 import MobileCustom from "@/components/menu/MobileCustom";
@@ -14,7 +12,7 @@ import { useModalStore } from "@/state/useModalToggleStore";
 const Menu = () => {
   const { isCheckedOptions, handleIsCheckedOptions } = useFilterStore();
   const { menuType, handleTypeSwitch } = useMenuTypeStore();
-  const { isModalToggle, handleProductType, handleToggle } = useModalStore();
+  const { isModalToggle } = useModalStore();
 
   return (
     <>
@@ -89,7 +87,8 @@ const Menu = () => {
             </div>
             {/* menu & pagination */}
             <div className="">
-              <>
+              <MenuGridAndList />
+              {/* <>
                 {menuType === "list" ? (
                   <div className="flex flex-col gap-4">
                     {menuItems.map((item) => {
@@ -121,7 +120,7 @@ const Menu = () => {
                     })}
                   </div>
                 )}
-              </>
+              </> */}
 
               {/* pagination */}
               <div className=""></div>

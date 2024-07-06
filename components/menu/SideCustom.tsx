@@ -1,18 +1,19 @@
 import { mealsCustomList } from "@/data/others/customlist";
 import { drinksCustomList } from "@/data/others/customlist";
-import {
-  CustomMealsKeys,
-  CustomDrinksKeys,
-} from "@/types/type";
+import { CustomMealsKeys, CustomDrinksKeys } from "@/types/type";
 import { useModalStore } from "@/state/useModalToggleStore";
 import { useCustomStore } from "@/state/useCustomStore";
+import { FiPlus } from "react-icons/fi";
+import { FiMinus } from "react-icons/fi";
+
 const SideCustom = () => {
   const { isProductType } = useModalStore();
   const { mealCustom, drinkCustom, handleMealsCustom, handleDrinksCustom } =
     useCustomStore();
+  // console.log(isProductType);
   return (
     <>
-      {isProductType === "" && (
+      {!isProductType && (
         <div className="text-sm text-latte w-full text-center">
           Nothing select.
         </div>
@@ -127,6 +128,26 @@ const SideCustom = () => {
               </div>
             );
           })}
+        </div>
+      )}
+      {isProductType && (
+        <div className="flex flex-col gap-2 h-20">
+          <div className="bg-yellow flex w-full mx-auto py-1 justify-around">
+            <button className="text-lg text-olive">
+              <FiMinus />
+            </button>
+            <input
+              type="number"
+              className="text-center bg-transparent w-24 lg:w-full"
+              defaultValue={1}
+            />
+            <button className="text-lg text-olive ">
+              <FiPlus />
+            </button>
+          </div>
+          <button className="bg-orange text-white text-sm w-full py-1 rounded-md">
+            Add to Cart
+          </button>
         </div>
       )}
     </>

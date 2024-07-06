@@ -65,3 +65,12 @@ export type CustomMeals = {
   addon: string[];
 };
 export type CustomMealsKeys = keyof CustomMeals;
+export type ProductCartProps = {
+  id: string;
+  image: string;
+  name: string;
+  custom: string | null;
+  price: number;
+  type: "drinks" | "dessert" | "meals";
+  qty: number;
+};
