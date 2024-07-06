@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { ordertablehead } from "@/data/others/ordertablehead";
+import Pagination from "../common/Pagination";
 type OrdersLayoutProps = {
   title: string;
   children?: ReactNode;
@@ -33,6 +34,7 @@ const OrdersLayout = (props: OrdersLayoutProps) => {
           })}
         </div>
         <div className="flex flex-col gap-2">{children}</div>
+        <Pagination />
       </div>
     </div>
   );

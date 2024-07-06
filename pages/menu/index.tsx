@@ -6,6 +6,7 @@ import { typeOptions } from "@/data/others/producttype";
 import { filterOptions } from "@/types/type";
 import MobileCustom from "@/components/menu/MobileCustom";
 import DesktopCustom from "@/components/menu/DesktopCustom";
+import Pagination from "@/components/common/Pagination";
 import { useFilterStore } from "@/state/useFilterStore";
 import { useMenuTypeStore } from "@/state/useMenuTypeStore";
 import { useModalStore } from "@/state/useModalToggleStore";
@@ -88,42 +89,8 @@ const Menu = () => {
             {/* menu & pagination */}
             <div className="">
               <MenuGridAndList />
-              {/* <>
-                {menuType === "list" ? (
-                  <div className="flex flex-col gap-4">
-                    {menuItems.map((item) => {
-                      return (
-                        <ProductList
-                          {...item}
-                          key={item.id}
-                          onProductSelect={() => {
-                            handleProductType(item.type);
-                            handleToggle();
-                          }}
-                        />
-                      );
-                    })}
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
-                    {menuItems.map((item) => {
-                      return (
-                        <ProductCard
-                          {...item}
-                          key={item.id}
-                          onProductSelect={() => {
-                            handleProductType(item.type);
-                            handleToggle();
-                          }}
-                        />
-                      );
-                    })}
-                  </div>
-                )}
-              </> */}
-
               {/* pagination */}
-              <div className=""></div>
+              <Pagination />
             </div>
           </div>
         </div>
