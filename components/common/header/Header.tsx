@@ -8,10 +8,12 @@ import {
   navlinks_mobile,
   navlinks_two,
 } from "@/data/others/navlinks";
-
+import WishModal from "../wishlist/WishModal";
+import { useModalStore } from "@/state/useModalToggleStore";
 const Header = () => {
   const [isToggle, setIsToggle] = useState(false);
   const { pathname } = useRouter();
+  const { isWishToggle, handleWishToggle } = useModalStore();
   return (
     <>
       <header className="z-[888] w-full h-[60px] md:w-[60px] md:h-screen leading-[60px] md:leading-normal bg-yellow flex justify-between items-center fixed top-0 left-0 md:flex-col px-4 md:px-0 md:py-6">
@@ -55,7 +57,7 @@ const Header = () => {
         {/* mobile navbar */}
         <nav className="flex md:hidden h-full min-w-[160px]">
           {navlinks_mobile.map(({ id, img, img_active, href }, index) => {
-            return index > 0 ? (
+            return index >= 2 ? (
               <Link
                 href={href}
                 key={id}
@@ -75,7 +77,10 @@ const Header = () => {
               <button
                 key={id}
                 title={id}
-                onClick={() => setIsToggle(!isToggle)}
+                onClick={() => {
+                  if (id === "more") setIsToggle(!isToggle);
+                  if (id === "wish") handleWishToggle();
+                }}
                 className={`px-1.5`}
               >
                 <Image src={img} width={30} height={30} alt={id}></Image>
@@ -122,6 +127,7 @@ const Header = () => {
           isToggle={isToggle}
         />
       )}
+      {isWishToggle && <WishModal />}
     </>
   );
 };

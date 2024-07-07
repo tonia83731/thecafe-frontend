@@ -1,6 +1,6 @@
-import CheckoutForm from "@/components/CartList/CheckoutForm";
-import CheckoutFormMobile from "@/components/CartList/CheckoutFormMobile";
-import CartItemDetail from "@/components/CartList/CartItemDetail";
+import CheckoutForm from "@/components/cartList/CheckoutForm";
+import CheckoutFormMobile from "@/components/cartList/CheckoutFormMobile";
+import CartItemDetail from "@/components/cartList/CartItemDetail";
 import { cartlist } from "@/data/dummy/cartlist";
 const CartList = () => {
   return (
