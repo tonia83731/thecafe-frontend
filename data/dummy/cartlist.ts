@@ -36,4 +36,22 @@ export const cartlist: ProductCartProps[] = [
     type: "dessert",
     qty: 1,
   },
+  {
+    id: "p16",
+    image: "/menu/tea.jpg",
+    name: "Caesar Salad",
+    price: 8.0,
+    type: "meals",
+    custom: "30% ice, 30% sugar, add Topioca, Coconut Jelly, Gress Jelly",
+    qty: 2,
+  },
+  {
+    id: "p17",
+    image: "/menu/tea.jpg",
+    name: "Grilled Chicken Sandwich",
+    custom: "30% ice, 30% sugar, add Topioca, Coconut Jelly, Gress Jelly",
+    qty: 2,
+    price: 9.0,
+    type: "meals",
+  },
 ];

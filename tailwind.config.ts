@@ -25,6 +25,7 @@ const config: Config = {
         "olive-40": "rgb(66, 69, 48, .4)",
         "olive-80": "rgb(66, 69, 48, .8)",
         "gray-green": "#87A08B",
+        "gray-green-60": "rgb(135, 160, 139, .6)",
         "gray-green-40": "rgb(135, 160, 139, .4)",
         "gray-green-20": "rgb(135, 160, 139, .2)",
         macha: "#95A041",

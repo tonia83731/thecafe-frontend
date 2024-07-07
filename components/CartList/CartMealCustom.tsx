@@ -1,11 +1,10 @@
 import { mealsCustomList } from "@/data/others/customlist";
-import { CustomMealsKeys } from "@/types/type";
-import PlusAndMinus from "../common/PlusAndMinus";
 import { useCustomStore } from "@/state/useCustomStore";
-const MealsCustom = () => {
+import { CustomMealsKeys } from "@/types/type";
+const CartMealCustom = () => {
   const { mealCustom, handleMealsCustom } = useCustomStore();
   return (
-    <div className="flex flex-col gap-2">
+    <div>
       {mealsCustomList.map(({ uid, title, options }) => {
         return (
           <div className="" key={uid}>
@@ -38,12 +37,8 @@ const MealsCustom = () => {
           </div>
         );
       })}
-      <PlusAndMinus />
-      <button className="bg-orange text-white text-sm w-full py-1 rounded-md">
-        Add to Cart
-      </button>
     </div>
   );
 };
 
-export default MealsCustom;
+export default CartMealCustom;

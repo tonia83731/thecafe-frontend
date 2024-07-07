@@ -5,7 +5,7 @@ import { useModalStore } from "@/state/useModalToggleStore";
 import { useCustomStore } from "@/state/useCustomStore";
 import { FiPlus } from "react-icons/fi";
 import { FiMinus } from "react-icons/fi";
-
+import PlusAndMinus from "../common/PlusAndMinus";
 const SideCustom = () => {
   const { isProductType } = useModalStore();
   const { mealCustom, drinkCustom, handleMealsCustom, handleDrinksCustom } =
@@ -132,19 +132,7 @@ const SideCustom = () => {
       )}
       {isProductType && (
         <div className="flex flex-col gap-2 h-20">
-          <div className="bg-yellow flex w-full mx-auto py-1 justify-around">
-            <button className="text-lg text-olive">
-              <FiMinus />
-            </button>
-            <input
-              type="number"
-              className="text-center bg-transparent w-24 lg:w-full"
-              defaultValue={1}
-            />
-            <button className="text-lg text-olive ">
-              <FiPlus />
-            </button>
-          </div>
+          <PlusAndMinus />
           <button className="bg-orange text-white text-sm w-full py-1 rounded-md">
             Add to Cart
           </button>
